@@ -9,7 +9,7 @@ cnt = 0
 for i in range(N): #총감독관은 시험장 당 한 명씩
     A_i[i] -= B
     cnt += 1
-    if A_i[i] < 0 :
+    if A_i[i] < 0 : #뺄셈으로 수험장 인원이 -가 될 경우를 대비
         A_i[i] = 0
 
 for i in range(N): #부감독관은 여러명
