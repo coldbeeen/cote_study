@@ -11,6 +11,5 @@ while i<=len(s)-len(c):
         continue
     i+=1
 print(cnt)
-
-        
+#커밋했는데 뭔가 문제가 생겨서 다시 커밋함
 
