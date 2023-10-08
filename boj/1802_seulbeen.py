@@ -10,18 +10,12 @@ for _ in range(n):
 
         for i in range(len(paper)//2): # 가운데 기준으로 숫자가 대칭이어야 함
             j=len(paper)-1-i
-            if paper[i]=='0':
-                if paper[j]=='1':
-                    pass
-                else:
-                    flag="NO"
-                    break
+            if paper[i]!=paper[j]:
+                pass
             else:
-                if paper[j]=='0':
-                    pass
-                else:
-                    flag="NO"
-                    break
+                flag="NO"
+                break
+            
         if flag=="NO":
             break
 
