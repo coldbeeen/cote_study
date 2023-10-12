@@ -12,7 +12,7 @@ def check_and_split(foldStr):  # 접을 수 있다면 True를 반환하는 재�
             return False
         i += 1
 
-    if check_and_split(foldStr[:mid]) and check_and_split(foldStr[mid + 1:]):  # 양 쪽을 분할하여 다시 호출하며 True인지 검사
+    if check_and_split(foldStr[:mid]):
         return True
 
 caseNum = int(input())
