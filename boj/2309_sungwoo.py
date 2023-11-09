@@ -16,5 +16,5 @@ for h1 in range(len(heights)-1):
             break
     if flag:  # 이중 반복문 빠져나가기
         break
-
+        
 for i in sorted(result): print(i)  # 정렬해 출력
