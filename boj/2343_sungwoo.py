@@ -16,7 +16,7 @@ while start <= end:
         tmp_length += lecture
     tmp_blueray_cnt += 1  # 남은 강의까지 해서 블루레이 개수 1개 추가
 
-    if tmp_blueray_cnt <= m:  # 가능함. start ~ mid+1로 범위 좁힘
+    if tmp_blueray_cnt <= m:  # 가능함. start ~ mid-1로 범위 좁힘
         end = mid - 1
     else:  # 불가능. mid+1 ~ end로 범위 좁힘
         start = mid + 1
