@@ -29,7 +29,7 @@ def comebackhome(x, y, cnt):
 
 ans = 0
 
-route[R - 1][0] = 1
+route[R - 1][0] = 'T'
 comebackhome(R - 1, 0, 1) #초기 위치
 
 print(ans)
