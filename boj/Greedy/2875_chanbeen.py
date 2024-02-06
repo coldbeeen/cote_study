@@ -15,5 +15,3 @@ while True :
         break
     
 print("%d" %cnt)
-
-# 반복문 없이 풀 수 있었음 (성우)

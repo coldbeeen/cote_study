@@ -36,9 +36,3 @@ for i in range(M):
 
 print(result)
 print(cnt)
-
-# Hamming distance 연산을 열별로 하는 게 아니라 전체에서 한번에 빼줄 수도 있음 (슬빈, 성우)
-# 그치만 연산 수는 동일함
-# 리스트 안에 딕셔너리를 입력받을 수 있음(성우)
-# sorted 함수, count 함수(성우)
-# mode 함수(태호)
