@@ -15,5 +15,3 @@ while num > 0 :
     cnt += 1
 
 print(cnt)
-
-#while 문을 한번만 써서 해결할 수는 없었을까?
