@@ -3,7 +3,7 @@ from collections import deque
 a, b = map(int, input().split())
 n, m = map(int, input().split())
 graph = [[] for _ in range(n+1)]
-visited = [False for _ in range(n+1)]  # 무한 치환이 일어날 수 있기 때문에 방문 처리 필요
+visited = [False for _ in range(n+1)]  # 치환 문자쌍을 반복적으로 탐색하지 않도록 방문 처리 필요
 distance = [-1 for _ in range(n+1)]  # 거리
 for _ in range(m):
     x, y = map(int, input().split())
