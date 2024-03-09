@@ -19,4 +19,5 @@ for i in range(6, n+1):
         dp[i] = min(dp[i-3], dp[i-5]) + 1
         # 둘 다 양수면 둘 중 최소 +1
 
+
 print(dp[n])
