@@ -8,8 +8,6 @@ A, B = map(int, input().split())
 result = {}
 
 def calculate(num, cnt):
-    global flag
-    
     if num >= B:
         result[num] = cnt
         
