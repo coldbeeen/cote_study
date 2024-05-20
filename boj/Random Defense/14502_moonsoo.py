@@ -2,7 +2,8 @@ from collections import deque
 import copy
 
 def BFS(copy, queue):
-
+    # 바이러스(2) 기준 상하좌우로 증식하고 0이었던 것은 데크에 넣어주어 새로 증식 가능하게 함
+    
     while queue:
         x, y = queue.popleft()
 
@@ -15,6 +16,7 @@ def BFS(copy, queue):
                 continue
 
             if copy[nx][ny] == 0:
+                # 빈 칸인 경우, 바이러스가 증식하고 데크에 append
                 copy[nx][ny] = 2
                 queue.append((nx, ny))
     
@@ -56,6 +58,7 @@ def calcualte_area(i, j, k):
     # 안전지대 카운팅
     cnt = count_zero(copy_lab)
 
+    # 최댓값 갱신
     return max(result, cnt)
 
 
@@ -78,3 +81,21 @@ for i in range(nm):
 
             
 print(result)
+
+"""
+문제:
+
+NxM의 행렬에서 0:빈 칸, 1:벽, 2:바이러스.
+바이러스는 상하좌우로 퍼져나가며 벽을 세 개 세울 수 있다.
+벽을 세우고 바이러스가 퍼졌을 때 안전지대(0)의 최댓값 구하기.
+-----------------------------------------------------------------
+풀이:
+
+N, M <= 8 이므로 완전탐색을 해도 시간 초과가 나지 않을 것 같다고 생각했다.
+따라서 매 번 세 개의 0, 0, 0인 조합을 찾고 각각 벽을 세웠을 때, 안전지대의 값을 카운팅해주었다.
+
+1. 완전탐색하며 0, 0, 0인 인덱스 찾기
+2. BFS를 통해 바이러스 증식
+3. 안전지대(바이러스 증식 이후에는 0만 카운팅하면 됨) 카운팅
+4. 최댓값 갱신
+"""
