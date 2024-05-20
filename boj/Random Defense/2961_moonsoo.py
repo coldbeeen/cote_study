@@ -36,6 +36,7 @@ result = float("inf")
 for i in range(N):
     DFS(i+1, 1, 0)
 
+
 print(result)
 
 """
