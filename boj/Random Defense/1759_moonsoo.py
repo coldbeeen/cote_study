@@ -12,7 +12,6 @@ def DFS(index, depth):
         complement = set(stack) - set(vowels)
         if (len(intersection) >= 1) and (len(complement) >= 2):
             # 종료조건: 최소 한 개의 모음과 두 개의 자음이 남아있지 않으면 종료
-            print(intersection, complement)
             # 가능성 있는 암호 출력
             print(''.join(stack))
         # top원소를 지워주어 다른 원소가 올 수 있도록 한다.
