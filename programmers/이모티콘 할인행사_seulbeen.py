@@ -9,27 +9,27 @@ def solution(users, emoticons):
     answer = [0, 0]
     dis = [10, 20, 30, 40]
     for p in product(dis, repeat=emg_len):
-        counts, money = 0, 0
+        cnt, price = 0, 0
         for i in range(len(users)):
-            user_discount = users[i][0]
+            user_dis = users[i][0]
             total = 0
 
             for j in range(len(p)):
-                if user_discount <= p[j]:
+                if user_dis <= p[j]:
                     total += emoticons[j] * (100 - p[j]) * 0.01
 
             if total >= users[i][1]:
-                counts += 1
+                cnt += 1
 
             else:
-                money += total
+                price += total
 
-        if answer[0] > counts:
+        if answer[0] > cnt:
             continue
 
-        if answer[0] == counts and answer[1] > money:
+        if answer[0] == cnt and answer[1] > price:
             continue
 
-        answer = [counts, money]
+        answer = [cnt, price]
 
     return answer
