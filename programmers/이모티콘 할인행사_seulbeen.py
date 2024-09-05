@@ -3,7 +3,7 @@ from itertools import product
 # product("12","34") => 13,14,23,24
 # repeat : 한리스트를 n만큼 반복해서 동일 진행
 # product("12",repeat=2) = product("12","12")
-
+#
 def solution(users, emoticons):
     emg_len = len(emoticons)
     answer = [0, 0]
