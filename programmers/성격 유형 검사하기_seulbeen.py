@@ -2,7 +2,7 @@ from collections import defaultdict
 
 def solution(survey, choices):
     answer = ""
-    mbti = ["RT", "CF", "JM", "AN"]#이미 사전순 정렬되어있음
+    mbti = ["RT", "CF", "JM", "AN"] #이미 사전순 정렬되어있음
     point = defaultdict(int)
 
     for i in range(len(survey)):
