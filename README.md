@@ -2,7 +2,6 @@
 + 이찬빈
 + 조성우
 + 제슬빈
-+ 박문수
 
 ### 💡 [Background]
 #### 코딩테스트 대비 문제 풀이
@@ -13,7 +12,8 @@
 
 ### 📚 [Stack]
 
-+ Python 
++ Python
++ Java
 
 ### 👨‍🎓 [What I learned]
 
