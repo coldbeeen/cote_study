@@ -1,10 +1,18 @@
-# 1857 - 1924
-# 와 걍 현타오네 이주전에 풀었는데 또 헤메네
+# 18:57- 19:24 (27분)
 # 일단 한행에 무조건 하나씩 넣고
 # 열이 같으면 안됨(같은 원소가 있으면 안됨)
 # 대각선상에 있으면 안됨(행번호 차이랑 원소 차이랑 같으면 안됨)
 # [0,1,2,3]
+"""
+19시 45분
+비상상황 :  주석 달아놓고 다시 돌렸는데 마지막 테스트케이스 갑자기 시간초과 뜸
+주석지워봐도 시간초과뜨고  맞았던 코드 그대로 넣어도 시간초과뜸 뭐지? 뽀록으로 정답이 뜬건가?
+"""
+
+
 def solution(n):
+
+    global answer
     answer = 0
     chess = [0 for _ in range(n)]
     visit = [False for _ in range(n)]
@@ -19,13 +27,11 @@ def solution(n):
         return True
 
     def backtracking(idx):
-        nonlocal answer
+        global answer
 
-        # 종료조건
         if idx == n:
             answer += 1
             return
-
         for i in range(n):
             # 방문하지 않은 행이라면
             if visit[idx] == False:
