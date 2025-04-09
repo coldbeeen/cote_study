@@ -1,25 +1,33 @@
-#9:45, 10:01 종료
+#약 25분 소요
 
 import math
 
 def solution(a, cylinder):
-    answer = [0, 0]
+    def next_idx(num):
+        return (num + 1) % len(cylinder)
     
     numer = 0 #분자
     denomi = 0 #분모
     
+    bullets = 0
+    
+    for i in range(a):
+        bullets += cylinder[i] #처음 인덱스부터 a번 발사했을 때 총알 수
+    
+    left = 0
+    right = a - 1 #투 포인터 초기화
+    
     for i in range(len(cylinder)):
-        if cylinder[i]:
+        bullets -= cylinder[left] #가장 왼쪽값 제거
+        left = next_idx(left)
+        
+        right = next_idx(right)
+        bullets += cylinder[right] #새로운 오른쪽값 추가
+        
+        if cylinder[i]: #방아쇠를 1번 당겼을 때 총알이 발사됨
             continue
         else:
-            idx = (i + 1) % len(cylinder) #발사x 확인 후, 다음 실린더
-            flag = True
-            
-            for j in range(a):
-                if cylinder[(idx + j) % len(cylinder)]:
-                    flag = False
-            
-            if flag: #총알 발사 안 되는 케이스
+            if not bullets: #총알 발사 안 되는 케이스
                 numer += 1
             
             denomi += 1
@@ -34,8 +42,8 @@ def solution(a, cylinder):
             denomi //= gcd
         
         return [numer, denomi]
-    
-    return answer
 
 #위에 케이스 2개는 무시할 것
 #방아쇠를 1번 당겼을 때 총알이 발사되지 않았으므로, 값이 1인 실린더는 분모로도 카운트하면 안 됨
+#bullets는 left 인덱스부터 a번 발사했을 때 발사되는 총알의 수
+#left, right를 사용하여 투포인터로 bullets 변수 관리 -> 시간 복잡도 O(N)으로 감소
