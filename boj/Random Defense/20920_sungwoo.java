@@ -23,36 +23,23 @@ public class Main {
             }
         }
 
-        HashMap<Integer, ArrayList<String>> cntMap = new HashMap<>();  // 개수-단어리스트 Map (key: count, value: word list)
+        List<String> words = new ArrayList<>(wordMap.keySet());
+        Collections.sort(words, new Comparator<String>((o1, o2) -> {
+                // 자주 등장하는 단어 순서대로 정렬
+                if (wordMap.get(o1) != wordMap.get(o2)) {
+                    return wordMap.get(o2) - wordMap.get(o1)
+                }
+                // 등장 횟수가 같으면 길이가 긴 단어가 먼저 오도록 정렬
+                if (o1.length() != o2.length()) {
+                    return o2.length() - o1.length();
+                }
+                // 등장 횟수와 길이가 같으면 사전 순으로 정렬
+                return o1.compareTo(o2);
+            }
+        });
 
-        for (Map.Entry<String, Integer> entry: wordMap.entrySet()) {  // 단어 개수를 키로 하여 단어 추가
-
-            String word = entry.getKey();
-            int cnt = entry.getValue();
-
-            if (!cntMap.containsKey(cnt))
-                cntMap.put(cnt, new ArrayList<>());
-
-            cntMap.get(cnt).add(word);
-        }
-
-        ArrayList<Integer> cntList = new ArrayList<>(cntMap.keySet());  // 키(단어 개수)를 따로 가져옴
-        Collections.sort(cntList, Comparator.reverseOrder());  // 내림차순 정렬함
-
-        for (int cnt: cntList) {  // 단어 개수가 많은 순으로 cntMap 순회
-
-            ArrayList<String> words = cntMap.get(cnt);  // 단어 개수가 cnt개인 단어 리스트
-
-            Collections.sort(words, (a, b) -> {  // 2, 3번 기준에 따른 정렬 수행
-                if (a.length() == b.length())  // 길이가 같은 경우 사전순
-                    return a.compareTo(b);
-                else  // 길이가 다른 경우 길이순
-                    return -Integer.compare(a.length(), b.length());
-            });
-
-            for (String word: words)  // 정렬된 words를 순서대로 출력
+        for (String word: words)  // 정렬된 words를 순서대로 출력
                 bw.write(word + "\n");
-        }
         bw.flush();
     }
 }
