@@ -9,7 +9,7 @@ import sys
 import heapq
 
 input = sys.stdin.readline
-T = 100
+T = float("inf")
 N, M, X = map(int, input().split())
 # print(N,M,X)
 graph = [[] for _ in range(N + 1)]
