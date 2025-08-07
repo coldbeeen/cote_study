@@ -1,49 +1,44 @@
+#80분 +@, 구글링
+
+import sys
 from collections import deque
 
-def bfs(a, b):
-    visited = [[-1] * M for _ in range(N)]
-    visited[a][b] = 0
+input = sys.stdin.readline
 
-    queue = deque([(a, b)])
+n, m = map(int, input().split())
+arr = []
 
-    while queue:
-        x, y = queue.popleft()
+shark = deque()
+for i in range(n):
+    temp = list(map(int, input().split()))
+    for t in range(m):
+        if temp[t] == 1:
+            shark.append((i, t)) #상어 위치를 처음에 담아놓고 bfs를 한번만 실행
+    arr.append(temp)
 
-        for i in range(8):
-            nx = x + dx[i]
-            ny = y + dy[i]
-
-            if 0 <= nx < N and 0 <= ny < M:
-                if not sharks[nx][ny]:
-                    if visited[nx][ny] == -1:
-                        visited[nx][ny] = visited[x][y] + 1
-                        queue.append((nx, ny))
-
-    for i in range(N):
-        for j in range(M):
-            if visited[i][j] < result[i][j]:
-                result[i][j] = visited[i][j]
+mx = [-1, -1, -1, 0, 1, 0, 1, 1]
+my = [-1, 0, 1, 1, 1, -1, 0, -1]
 
 
-N, M = map(int, input().split())
+def bfs():
+    while shark:
+        x, y = shark.popleft()
+        for k in range(8):
+            dx = x + mx[k]
+            dy = y + my[k]
+            if 0 <= dx < n and 0 <= dy < m:
+                if arr[dx][dy] == 0:
+                    shark.append((dx, dy))
+                    arr[dx][dy] = arr[x][y] + 1
+    return
 
-sharks = [list(map(int, input().split())) for _ in range(N)]
 
-result = [[float('inf')] * M for _ in range(N)]
+bfs()
+safe_dist = 0
+for i in range(n):
+    for j in range(m):
+        safe_dist = max(safe_dist, arr[i][j])
 
-dx = [-1, -1, -1, 0, 0, 1, 1, 1]
-dy = [-1, 0, 1, -1, 1, -1, 0, 1]
+print(safe_dist - 1)
 
-for i in range(N):
-    for j in range(M):
-        if sharks[i][j]:
-            bfs(i, j)
-
-max_result = 0
-
-for i in range(N):
-    for j in range(M):
-        if max_result < result[i][j]:
-            max_result = result[i][j]
-
-print(max_result)
+#상어 위치를 기준으로 bfs를 진행하는 것이 포인트
